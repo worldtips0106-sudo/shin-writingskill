@@ -1,0 +1,28 @@
+---
+import { site, about, mainCta } from "../data/site";
+import CtaButton from "./CtaButton.astro";
+---
+
+<header class="pt-14 pb-4 text-center sm:pt-20">
+  <p class="text-[13px] tracking-[0.2em] text-accent">
+    {about.role}
+  </p>
+
+  <h1 class="mt-3 text-[28px] leading-tight font-black tracking-tight sm:text-[34px]">
+    {site.name}
+  </h1>
+
+  <p class="mx-auto mt-4 max-w-[26em] text-[15px] text-ink-muted">
+    {site.tagline}
+  </p>
+
+  <!-- 一番押したいボタン（1つだけ置く） -->
+  <div class="mx-auto mt-9 max-w-[380px]">
+    <CtaButton href={mainCta.url} label={mainCta.label} />
+    {
+      mainCta.note && (
+        <p class="mt-3 text-[12px] text-ink-muted">{mainCta.note}</p>
+      )
+    }
+  </div>
+</header>

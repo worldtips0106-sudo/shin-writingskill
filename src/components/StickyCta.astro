@@ -1,0 +1,18 @@
+---
+import { mainCta } from "../data/site";
+---
+
+<!-- 画面下に常に出る追従ボタン（スクロールしても消えない） -->
+<div
+  class="fixed inset-x-0 bottom-0 z-50 border-t border-hairline bg-base/95 px-5 pt-3 shadow-[0_-2px_12px_rgba(33,37,42,0.06)] backdrop-blur-sm"
+  style="padding-bottom: calc(0.75rem + env(safe-area-inset-bottom));"
+>
+  <a
+    href={mainCta.url}
+    target="_blank"
+    rel="noopener"
+    class="mx-auto flex w-full max-w-[420px] items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-[15px] font-bold text-base transition hover:bg-accent-soft active:scale-[0.99]"
+  >
+    <span class="text-center leading-snug">{mainCta.label} →</span>
+  </a>
+</div>

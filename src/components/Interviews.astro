@@ -1,0 +1,76 @@
+---
+import Section from "./Section.astro";
+import { interviews } from "../data/site";
+---
+
+<Section id="voice" title={interviews.heading} lead={interviews.lead}>
+  <div class="space-y-6">
+    {
+      interviews.items.map((item) => (
+        <article class="overflow-hidden rounded-2xl border border-hairline bg-surface shadow-[0_1px_3px_rgba(33,37,42,0.05)]">
+          {item.youtubeId ? (
+            /* サムネイルをクリックしてから読み込む方式（ページを軽く保つため） */
+            <button
+              type="button"
+              class="group relative block w-full cursor-pointer"
+              data-youtube={item.youtubeId}
+              aria-label={`${item.name}さんとの対談動画を再生`}
+            >
+              <img
+                src={`https://i.ytimg.com/vi/${item.youtubeId}/hqdefault.jpg`}
+                alt=""
+                loading="lazy"
+                class="aspect-video w-full object-cover"
+              />
+              <span class="absolute inset-0 flex items-center justify-center bg-black/35 transition group-hover:bg-black/20">
+                <span class="flex h-16 w-16 items-center justify-center rounded-full bg-accent text-base">
+                  <svg
+                    width="20"
+                    height="22"
+                    viewBox="0 0 20 22"
+                    aria-hidden="true"
+                    fill="currentColor"
+                  >
+                    <path d="M19 11 0 22V0z" />
+                  </svg>
+                </span>
+              </span>
+            </button>
+          ) : (
+            /* ここに対談動画を入れる：site.ts の interviews.youtubeId にYouTubeの動画IDを書く */
+            <div class="flex aspect-video w-full items-center justify-center border-b border-hairline bg-surface-2 px-6 text-center text-[13px] text-ink-muted">
+              ここに対談動画を入れる
+              <br />
+              （src/data/site.ts の youtubeId にYouTubeの動画IDを記入）
+            </div>
+          )}
+
+          <div class="p-5">
+            <p class="text-[16px] font-bold">{item.name}</p>
+            <p class="mt-1 text-[13px] text-accent">{item.title}</p>
+            <p class="mt-3 text-[14px] text-ink-muted">{item.comment}</p>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</Section>
+
+<script>
+  // サムネイルを押したら、その場でYouTubeプレーヤーに差し替える
+  document.querySelectorAll<HTMLElement>("[data-youtube]").forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      const id = trigger.dataset.youtube;
+      if (!id) return;
+
+      const frame = document.createElement("iframe");
+      frame.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+      frame.title = "対談動画";
+      frame.allow =
+        "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+      frame.allowFullscreen = true;
+      frame.className = "aspect-video w-full";
+      trigger.replaceWith(frame);
+    });
+  });
+</script>

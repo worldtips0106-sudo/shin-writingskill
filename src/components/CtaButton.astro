@@ -1,0 +1,36 @@
+---
+/** サイト内で使う共通ボタン */
+interface Props {
+  href: string;
+  label: string;
+  /** primary＝ゴールドの塗り（主導線） / ghost＝枠線だけ（サブ導線） */
+  variant?: "primary" | "ghost";
+  class?: string;
+  /** 外部リンクとして開くか */
+  external?: boolean;
+}
+
+const {
+  href,
+  label,
+  variant = "primary",
+  class: className = "",
+  external = true,
+} = Astro.props;
+
+const base =
+  "inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-4 text-[15px] font-bold transition active:scale-[0.99]";
+const styles = {
+  primary: "bg-accent text-base hover:bg-accent-soft",
+  ghost: "border border-hairline text-ink hover:border-accent hover:text-accent",
+};
+---
+
+<a
+  href={href}
+  class={`${base} ${styles[variant]} ${className}`}
+  target={external ? "_blank" : undefined}
+  rel={external ? "noopener" : undefined}
+>
+  <span class="text-center leading-snug">{label} →</span>
+</a>

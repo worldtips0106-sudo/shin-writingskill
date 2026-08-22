@@ -1,0 +1,29 @@
+---
+/* -----------------------------------------------------------------
+   トップページ本体。
+   セクションの順番を変えたいときは、下の並びを入れ替えるだけです。
+   使わないセクションは、その行を削除（または先頭に // を付けてimportも削除）。
+   ----------------------------------------------------------------- */
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
+import Products from "../components/Products.astro";
+import Interviews from "../components/Interviews.astro";
+import LineGift from "../components/LineGift.astro";
+import InstaGrid from "../components/InstaGrid.astro";
+import Affiliate from "../components/Affiliate.astro";
+import SnsLinks from "../components/SnsLinks.astro";
+import StickyCta from "../components/StickyCta.astro";
+---
+
+<Layout>
+  <Hero />
+  <About />
+  <Products />
+  <Interviews />
+  <LineGift />
+  <InstaGrid />
+  <Affiliate />
+  <SnsLinks />
+  <StickyCta />
+</Layout>

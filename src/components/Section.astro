@@ -1,0 +1,32 @@
+---
+/** どのセクションでも共通で使う「見出し＋リード文」の枠 */
+interface Props {
+  id?: string;
+  title: string;
+  lead?: string;
+  /** true にすると見出しの横に「PR」ラベルが出ます（ステマ規制対応） */
+  pr?: boolean;
+}
+
+const { id, title, lead, pr = false } = Astro.props;
+---
+
+<section id={id} class="mt-14 scroll-mt-6 border-t border-hairline pt-12">
+  <div class="flex flex-wrap items-center gap-3">
+    <span class="h-px w-7 bg-accent" aria-hidden="true"></span>
+    <h2 class="text-[22px] font-black tracking-wide">{title}</h2>
+    {
+      pr && (
+        <span class="rounded-sm border border-accent/60 px-2 py-0.5 text-[11px] font-bold tracking-widest text-accent">
+          PR
+        </span>
+      )
+    }
+  </div>
+
+  {lead && <p class="mt-4 text-[15px] text-ink-muted">{lead}</p>}
+
+  <div class="mt-8">
+    <slot />
+  </div>
+</section>

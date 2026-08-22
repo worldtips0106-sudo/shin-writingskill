@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+/* ===========================================================
+   色とフォントの設定
+   ここを変えるとサイト全体の色が変わります。
+   トーン：Instagramの投稿に合わせた「明るい自然光」基調
+   ＝ 生成りの白 ＋ 黒に近い文字 ＋ くすみブルーグレーのアクセント
+   =========================================================== */
+@theme {
+  /* 背景（生成りの白。木や自然光の写真になじむ、少し温かい白） */
+  --color-base: #f7f5f1;
+  /* カードなどの面 */
+  --color-surface: #ffffff;
+  --color-surface-2: #edeae4;
+  /* 罫線 */
+  --color-hairline: #e2ddd5;
+
+  /* 文字 */
+  --color-ink: #21252a;
+  --color-ink-muted: #6b7076;
+
+  /* アクセント（ボタン・見出しの線・強調）＝投稿の帯のくすみブルーグレー */
+  --color-accent: #5c7f8d;
+  --color-accent-soft: #486976;
+
+  --font-sans:
+    "Noto Sans JP", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic",
+    Meiryo, system-ui, sans-serif;
+}
+
+/* ===========================================================
+   ページ全体の基本設定
+   =========================================================== */
+html {
+  scroll-behavior: smooth;
+  /* 追従ボタンに隠れないように、アンカー移動時の余白 */
+  scroll-padding-top: 1.5rem;
+}
+
+body {
+  background-color: var(--color-base);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  /* 画面下の追従ボタン分の余白（スマホ） */
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* 日本語の読みやすさ */
+p,
+li {
+  line-height: 1.9;
+}
+
+/* 折り返しをきれいに（対応ブラウザのみ） */
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}

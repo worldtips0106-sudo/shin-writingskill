@@ -1,0 +1,44 @@
+---
+import Section from "./Section.astro";
+import CtaButton from "./CtaButton.astro";
+import { sns, mainCta, site } from "../data/site";
+
+const year = new Date().getFullYear();
+---
+
+<Section id="contact" title={sns.heading} lead={sns.lead}>
+  <ul class="space-y-3">
+    {
+      sns.links.map((link) => (
+        <li>
+          <a
+            href={link.url}
+            target="_blank"
+            rel="noopener"
+            class="flex items-center justify-between rounded-xl border border-hairline bg-surface px-5 py-4 transition hover:border-accent shadow-[0_1px_3px_rgba(33,37,42,0.05)]"
+          >
+            <span class="text-[15px] font-bold">{link.label}</span>
+            <span class="text-[13px] text-ink-muted">{link.handle}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  {
+    sns.email && (
+      <p class="mt-6 text-[13px] text-ink-muted">
+        お仕事のご依頼・お問い合わせ：{sns.email}
+      </p>
+    )
+  }
+
+  <!-- 最後にもう一度、一番押したいボタン -->
+  <div class="mx-auto mt-10 max-w-[380px]">
+    <CtaButton href={mainCta.url} label={mainCta.label} />
+  </div>
+
+  <footer class="mt-14 border-t border-hairline pt-8 pb-4 text-center">
+    <p class="text-[12px] text-ink-muted">© {year} {site.name}</p>
+  </footer>
+</Section>

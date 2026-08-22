@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="画像未設定">
+  <rect width="400" height="400" fill="#edeae4"/>
+  <rect x="0.5" y="0.5" width="399" height="399" fill="none" stroke="#e2ddd5"/>
+  <g fill="#8b9096" font-family="sans-serif" text-anchor="middle">
+    <text x="200" y="192" font-size="22">ここに画像を入れる</text>
+    <text x="200" y="228" font-size="15" fill="#a6abb0">public/images/</text>
+  </g>
+</svg>
