@@ -1,45 +1,27 @@
 ---
-import { site, about, mainCta } from "../data/site";
+import { site, mainCta } from "../data/site";
 import CtaButton from "./CtaButton.astro";
 ---
 
-<header id="top" class="pt-8 pb-4 sm:pt-12 lg:pt-14 lg:pb-12">
-  <!-- PCは「文字が左・写真が右」の2カラム。スマホは文字の下に写真 -->
-  <div class="lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-center lg:gap-12">
-    <div class="text-center lg:text-left">
-      <p class="text-[13px] tracking-[0.2em] text-accent">
-        {about.role}
-      </p>
-
-      <h1
-        class="mt-3 text-[28px] leading-tight font-black tracking-tight sm:text-[34px] lg:mt-4 lg:text-[44px]"
-      >
-        {site.name}
-      </h1>
-
-      <p
-        class="mx-auto mt-4 max-w-[26em] text-[15px] text-ink-muted lg:mx-0 lg:mt-5 lg:text-[17px]"
-      >
-        {site.tagline}
-      </p>
-
-      <!-- 一番押したいボタン（1つだけ置く） -->
-      <div class="mx-auto mt-8 max-w-[380px] lg:mx-0 lg:mt-9">
-        <CtaButton href={mainCta.url} label={mainCta.label} />
-        {
-          mainCta.note && (
-            <p class="mt-3 text-center text-[12px] text-ink-muted lg:text-left">
-              {mainCta.note}
-            </p>
-          )
-        }
-      </div>
-    </div>
+<!--
+  スマホ：見出し → 画像 → キャッチ → ボタン の縦並び（中央揃え）
+  PC　　：左に「見出し・キャッチ・ボタン」、右に画像（縦位置は中央）の2カラム
+-->
+<header
+  id="top"
+  class="pt-10 pb-4 text-center sm:pt-14 lg:pt-20 lg:pb-16 lg:text-left"
+>
+  <div class="lg:grid lg:grid-cols-2 lg:items-center lg:gap-x-14">
+    <h1
+      class="text-[28px] leading-tight font-black tracking-tight sm:text-[34px] lg:col-start-1 lg:row-start-1 lg:text-[46px]"
+    >
+      {site.name}
+    </h1>
 
     {
       site.heroImage && (
         /* スマホでは画面いっぱいに広げる */
-        <div class="-mx-5 mt-10 sm:-mx-6 lg:mx-0 lg:mt-0">
+        <div class="-mx-5 mt-8 sm:-mx-6 lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:mx-0 lg:mt-0 lg:self-center">
           <img
             src={site.heroImage}
             alt={site.heroImageAlt}
@@ -52,5 +34,23 @@ import CtaButton from "./CtaButton.astro";
         </div>
       )
     }
+
+    <p
+      class="mx-auto mt-8 max-w-[26em] text-[15px] text-ink-muted lg:col-start-1 lg:row-start-2 lg:mx-0 lg:mt-6 lg:text-[17px]"
+    >
+      {site.tagline}
+    </p>
+
+    <!-- 一番押したいボタン（1つだけ置く） -->
+    <div
+      class="mx-auto mt-8 max-w-[380px] lg:col-start-1 lg:row-start-3 lg:mx-0 lg:mt-8"
+    >
+      <CtaButton href={mainCta.url} label={mainCta.label} />
+      {
+        mainCta.note && (
+          <p class="mt-3 text-[12px] text-ink-muted">{mainCta.note}</p>
+        )
+      }
+    </div>
   </div>
 </header>

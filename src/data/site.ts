@@ -62,8 +62,6 @@ export const mainCta = {
 export const about = {
   /** 表示名（本名で出す場合はここを書き換え） */
   name: "しん",
-  /** 肩書き（短い版・ヒーローの名前の上に出ます） */
-  role: "インスタ×ライティング",
   /** 肩書き（長い版・Aboutの名前の下に出ます） */
   roleFull: "Blog Writing Boost + 主宰 / ブログ・ライティング講師",
 
