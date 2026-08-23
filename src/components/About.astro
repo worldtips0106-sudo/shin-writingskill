@@ -4,30 +4,39 @@ import { about, site } from "../data/site";
 ---
 
 <Section id="about" title="はじめまして">
-  <!-- プロフィール写真 → public/images/profile.jpg を差し替える -->
-  <img
-    src={site.profileImage}
-    alt={about.name}
-    width="1600"
-    height="1067"
-    class="aspect-[3/2] w-full rounded-2xl border border-hairline bg-surface-2 object-cover"
-    onerror="this.onerror=null; this.src='/images/_placeholder.svg';"
-  />
+  <!-- PCでは写真を左、文章を右の2カラムに -->
+  <div class="lg:grid lg:grid-cols-[minmax(0,380px)_1fr] lg:items-start lg:gap-12">
+    <!-- プロフィール写真 → public/images/profile.jpg を差し替える -->
+    <img
+      src={site.profileImage}
+      alt={about.name}
+      width="1600"
+      height="1067"
+      class="aspect-[3/2] w-full rounded-2xl border border-hairline bg-surface-2 object-cover lg:sticky lg:top-24"
+      onerror="this.onerror=null; this.src='/images/_placeholder.svg';"
+    />
 
-  <p class="mt-7 text-[17px] font-bold">{about.name}</p>
-  <p class="mt-1.5 text-[13px] text-ink-muted">{about.roleFull}</p>
+    <div class="mt-7 lg:mt-0">
+      <p class="text-[17px] font-bold lg:text-[19px]">{about.name}</p>
+      <p class="mt-1.5 text-[13px] text-ink-muted">{about.roleFull}</p>
 
-  <div class="mt-5 space-y-5 text-[15px] text-ink-muted">
-    {about.paragraphs.map((text) => <p>{text}</p>)}
+      <div class="mt-5 space-y-5 text-[15px] text-ink-muted lg:text-[16px]">
+        {about.paragraphs.map((text) => <p>{text}</p>)}
+      </div>
+    </div>
   </div>
 
   {
     about.stats.length > 0 && (
-      <dl class="mt-8 grid grid-cols-3 gap-3">
+      <dl class="mt-8 grid grid-cols-3 gap-3 lg:mt-12 lg:gap-5">
         {about.stats.map((stat) => (
-          <div class="flex h-full flex-col justify-between rounded-xl border border-hairline bg-surface px-3 py-4 text-center shadow-[0_1px_3px_rgba(33,37,42,0.05)]">
-            <dt class="text-[11px] leading-snug text-ink-muted">{stat.label}</dt>
-            <dd class="mt-2 text-[17px] font-bold text-accent">{stat.value}</dd>
+          <div class="flex h-full flex-col justify-between rounded-xl border border-hairline bg-surface px-3 py-4 text-center shadow-[0_1px_3px_rgba(33,37,42,0.05)] lg:px-5 lg:py-6">
+            <dt class="text-[11px] leading-snug text-ink-muted lg:text-[13px]">
+              {stat.label}
+            </dt>
+            <dd class="mt-2 text-[17px] font-bold text-accent lg:text-[24px]">
+              {stat.value}
+            </dd>
           </div>
         ))}
       </dl>
@@ -36,25 +45,25 @@ import { about, site } from "../data/site";
 
   {
     about.story.length > 0 && (
-      <details class="group mt-8 rounded-xl border border-hairline bg-surface px-5 py-4 shadow-[0_1px_3px_rgba(33,37,42,0.05)]">
-        <summary class="flex cursor-pointer list-none items-center justify-between text-[14px] font-bold text-accent">
+      <details class="group mt-8 rounded-xl border border-hairline bg-surface px-5 py-4 shadow-[0_1px_3px_rgba(33,37,42,0.05)] lg:mt-10 lg:px-8 lg:py-6">
+        <summary class="flex cursor-pointer list-none items-center justify-between text-[14px] font-bold text-accent lg:text-[15px]">
           <span>くわしいストーリーを読む</span>
           <span class="transition group-open:rotate-180" aria-hidden="true">
             ▾
           </span>
         </summary>
 
-        <ol class="mt-7 space-y-7 border-l border-hairline pl-5">
+        <ol class="mt-7 space-y-7 border-l border-hairline pl-5 lg:mt-9 lg:grid lg:grid-cols-2 lg:gap-x-12 lg:gap-y-9 lg:space-y-0 lg:border-l-0 lg:pl-0">
           {about.story.map((chapter) => (
-            <li class="relative">
+            <li class="relative lg:border-l lg:border-hairline lg:pl-5">
               <span
-                class="absolute top-2 -left-[25px] h-2 w-2 rounded-full bg-accent"
+                class="absolute top-2 -left-[25px] h-2 w-2 rounded-full bg-accent lg:-left-[4.5px]"
                 aria-hidden="true"
               />
               <p class="text-[11px] tracking-widest text-accent">
                 {chapter.year}
               </p>
-              <h3 class="mt-1.5 text-[15px] leading-snug font-bold">
+              <h3 class="mt-1.5 text-[15px] leading-snug font-bold lg:text-[16px]">
                 {chapter.title}
               </h3>
               <p class="mt-2.5 text-[14px] text-ink-muted">{chapter.text}</p>

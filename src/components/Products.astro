@@ -7,7 +7,7 @@ import { products } from "../data/site";
   <div class="space-y-5">
     {
       products.items.map((item) => (
-        <article class="overflow-hidden rounded-2xl border border-hairline bg-surface shadow-[0_1px_3px_rgba(33,37,42,0.05)]">
+        <article class="overflow-hidden rounded-2xl border border-hairline bg-surface shadow-[0_1px_3px_rgba(33,37,42,0.05)] lg:grid lg:grid-cols-[320px_1fr]">
           {item.image && (
             <img
               src={item.image}
@@ -15,41 +15,45 @@ import { products } from "../data/site";
               width="780"
               height="1071"
               loading="lazy"
-              class="w-full border-b border-hairline bg-surface-2 object-cover"
+              class="w-full border-b border-hairline bg-surface-2 object-cover lg:border-r lg:border-b-0"
             />
           )}
 
-          <div class="p-6">
-          <h3 class="text-[19px] leading-snug font-bold">{item.name}</h3>
+          <div class="p-6 lg:flex lg:flex-col lg:justify-center lg:p-9">
+            <h3 class="text-[19px] leading-snug font-bold lg:text-[22px]">
+              {item.name}
+            </h3>
 
-          <p class="mt-3 text-[15px] text-ink-muted">{item.description}</p>
+            <p class="mt-3 text-[15px] text-ink-muted lg:text-[16px]">
+              {item.description}
+            </p>
 
-          {item.features.length > 0 && (
-            <ul class="mt-5 space-y-2 border-t border-hairline pt-5">
-              {item.features.map((feature) => (
-                <li class="flex gap-3 text-[14px]">
-                  <span class="text-accent" aria-hidden="true">
-                    ―
-                  </span>
-                  <span>{feature}</span>
-                </li>
-              ))}
-            </ul>
-          )}
+            {item.features.length > 0 && (
+              <ul class="mt-5 space-y-2 border-t border-hairline pt-5 lg:mt-6 lg:pt-6">
+                {item.features.map((feature) => (
+                  <li class="flex gap-3 text-[14px] lg:text-[15px]">
+                    <span class="text-accent" aria-hidden="true">
+                      ―
+                    </span>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
 
-          {item.price && (
-            <p class="mt-5 text-[15px] font-bold text-accent">{item.price}</p>
-          )}
+            {item.price && (
+              <p class="mt-5 text-[15px] font-bold text-accent">{item.price}</p>
+            )}
 
-          <a
-            href={item.url}
-            target="_blank"
-            rel="noopener"
-            class="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full border border-accent px-6 py-3.5 text-[14px] font-bold text-accent transition hover:bg-accent hover:text-base"
-          >
-            {item.ctaLabel}
-            <span aria-hidden="true">→</span>
-          </a>
+            <a
+              href={item.url}
+              target="_blank"
+              rel="noopener"
+              class="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full border border-accent px-6 py-3.5 text-[14px] font-bold text-accent transition hover:bg-accent hover:text-base lg:mt-8 lg:w-auto lg:self-start lg:px-8"
+            >
+              {item.ctaLabel}
+              <span aria-hidden="true">→</span>
+            </a>
           </div>
         </article>
       ))
@@ -58,19 +62,24 @@ import { products } from "../data/site";
 
   {
     products.results.items.length > 0 && (
-      <div class="mt-8 rounded-2xl border border-hairline bg-surface-2 p-6">
-        <h3 class="text-[15px] font-bold">{products.results.heading}</h3>
+      <div class="mt-8 rounded-2xl border border-hairline bg-surface-2 p-6 lg:mt-10 lg:p-9">
+        <h3 class="text-[15px] font-bold lg:text-[17px]">
+          {products.results.heading}
+        </h3>
 
-        <ul class="mt-4 space-y-3">
+        <ul class="mt-4 space-y-3 lg:mt-6 lg:grid lg:grid-cols-2 lg:gap-x-10 lg:gap-y-4 lg:space-y-0">
           {products.results.items.map((result) => (
-            <li class="flex gap-3 text-[14px]">
-              <span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true" />
+            <li class="flex gap-3 text-[14px] lg:text-[15px]">
+              <span
+                class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
+                aria-hidden="true"
+              />
               <span>{result}</span>
             </li>
           ))}
         </ul>
 
-        <p class="mt-5 text-[11px] leading-relaxed text-ink-muted">
+        <p class="mt-5 text-[11px] leading-relaxed text-ink-muted lg:mt-7">
           {products.results.note}
         </p>
       </div>

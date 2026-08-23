@@ -15,11 +15,27 @@ export const site = {
   /** 検索結果やSNSシェアに出る説明文（80〜120文字が目安） */
   description:
     "インスタ発信者に向けて、売れるライティングのコツを発信。文章力でTV出演、1,500人が受講する Blog Writing Boost + 主宰。しん（@shin_writing_skill）の公式サイトです。",
+  /** 画面上部のメニューバーに出す短い名前（サイト名が長いのでこちらを表示） */
+  shortName: "しん｜インスタ×ライティング",
   /** プロフィール写真：public/images/ に置いたファイル名（Aboutセクションに表示されます） */
   profileImage: "/images/profile.jpg",
   /** SNSシェア用画像（無ければプロフィール写真のままでOK） */
   ogImage: "/images/profile.jpg",
 };
+
+/**
+ * 画面上部のメニュー。
+ * 並び替え・削除は、この配列を編集するだけでOKです。
+ * hash は各セクションのidと対応しています。
+ */
+export const nav = [
+  { label: "はじめまして", hash: "#about" },
+  { label: "サービス", hash: "#service" },
+  { label: "受講生の声", hash: "#voice" },
+  { label: "Instagram", hash: "#instagram" },
+  { label: "おすすめ", hash: "#items" },
+  { label: "つながる", hash: "#contact" },
+];
 
 /**
  * LINE登録のURL。

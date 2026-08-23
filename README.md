@@ -41,6 +41,14 @@ YouTubeの動画IDは `https://youtu.be/**XXXXXXXXXXX**` の太字部分だけ�
 
 画像が無い間は「ここに画像を入れる」のグレー画像が出ます。
 
+## 3.5 上部メニューを編集する
+
+`src/data/site.ts` の `nav` を編集します（並び替え・削除・追加）。
+`hash` は各セクションのidと対応しています（`#about` `#service` `#voice`
+`#line` `#instagram` `#items` `#contact`）。
+
+メニューバーの左に出る名前は `site.shortName` です。
+
 ## 4. セクションの順番を変える／消す
 
 `src/pages/index.astro` の並びを入れ替える・行を消すだけ。
@@ -55,8 +63,10 @@ YouTubeの動画IDは `https://youtu.be/**XXXXXXXXXXX**` の太字部分だけ�
 
 ## 6. よくある調整
 
-- **画面下の追従ボタンをPCでは消したい**
-  `src/components/StickyCta.astro` の一番外側の `class` に `sm:hidden` を足す。
+- **画面下の追従ボタン**
+  PCでは非表示（上部メニューのLINEボタンを使う）、スマホでのみ表示されます。
+  スマホでも消したいときは `src/components/StickyCta.astro` の
+  一番外側の `class` の `lg:hidden` を `hidden` に変えてください。
 - **アフィリのセクションを使わない**
   `src/pages/index.astro` から `<Affiliate />` の行と `import` の行を消す。
   ※使う場合、「PR」表記と `rel="sponsored nofollow"` は消さないでください（ステマ規制）。

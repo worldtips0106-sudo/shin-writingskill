@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import { site } from "../data/site";
+import Header from "../components/Header.astro";
 
 interface Props {
   title?: string;
@@ -42,8 +43,12 @@ const canonical = Astro.site
   </head>
 
   <body class="bg-base text-ink">
-    <!-- ページ本体。スマホ縦読み前提で、本文の横幅は広げすぎない -->
-    <main class="mx-auto w-full max-w-[680px] px-5 pb-32 sm:px-6">
+    <Header />
+
+    <!-- ページ本体。スマホは1カラム、PCは横幅を広げて2カラムなどに展開 -->
+    <main
+      class="mx-auto w-full max-w-[680px] px-5 pb-32 sm:px-6 lg:max-w-[1040px] lg:px-10 lg:pb-24"
+    >
       <slot />
     </main>
   </body>

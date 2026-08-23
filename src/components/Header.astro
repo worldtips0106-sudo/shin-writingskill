@@ -1,0 +1,91 @@
+---
+import { site, nav, lineUrl } from "../data/site";
+---
+
+<!-- 画面上部に固定されるメニュー。各セクションへジャンプできます -->
+<header
+  class="sticky top-0 z-40 border-b border-hairline bg-base/90 backdrop-blur-sm"
+>
+  <div
+    class="mx-auto flex h-14 w-full max-w-[1040px] items-center justify-between gap-4 px-5 sm:px-6 lg:h-16 lg:px-10"
+  >
+    <a
+      href="#top"
+      class="truncate text-[14px] font-bold transition hover:text-accent lg:text-[15px]"
+    >
+      {site.shortName}
+    </a>
+
+    <!-- PC：横並びのメニュー -->
+    <nav class="hidden items-center gap-6 lg:flex">
+      {
+        nav.map((item) => (
+          <a
+            href={item.hash}
+            class="text-[13px] whitespace-nowrap text-ink-muted transition hover:text-accent"
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      <a
+        href={lineUrl}
+        target="_blank"
+        rel="noopener"
+        class="rounded-full bg-accent px-4 py-2 text-[13px] font-bold whitespace-nowrap text-base transition hover:bg-accent-soft"
+      >
+        LINE登録
+      </a>
+    </nav>
+
+    <!-- スマホ：タップで開くメニュー -->
+    <details class="group relative shrink-0 lg:hidden" data-menu>
+      <summary
+        class="flex cursor-pointer list-none items-center gap-1.5 rounded-full border border-hairline bg-surface px-3.5 py-1.5 text-[12px] font-bold"
+      >
+        メニュー
+        <span class="transition group-open:rotate-180" aria-hidden="true">▾</span>
+      </summary>
+
+      <div
+        class="absolute right-0 z-50 mt-3 w-56 rounded-xl border border-hairline bg-surface p-2 shadow-[0_8px_24px_rgba(33,37,42,0.12)]"
+      >
+        {
+          nav.map((item) => (
+            <a
+              href={item.hash}
+              class="block rounded-lg px-3 py-2.5 text-[14px] transition hover:bg-surface-2"
+            >
+              {item.label}
+            </a>
+          ))
+        }
+        <a
+          href={lineUrl}
+          target="_blank"
+          rel="noopener"
+          class="mt-1 block rounded-lg bg-accent px-3 py-2.5 text-center text-[14px] font-bold text-base"
+        >
+          LINE登録
+        </a>
+      </div>
+    </details>
+  </div>
+</header>
+
+<script>
+  // メニュー内のリンクを押したら、開いたパネルを閉じる
+  document.querySelectorAll<HTMLDetailsElement>("[data-menu]").forEach((menu) => {
+    menu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        menu.open = false;
+      });
+    });
+    // メニューの外側を押しても閉じる
+    document.addEventListener("click", (event) => {
+      if (menu.open && !menu.contains(event.target as Node)) {
+        menu.open = false;
+      }
+    });
+  });
+</script>

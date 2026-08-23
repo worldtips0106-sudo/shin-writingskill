@@ -11,10 +11,13 @@ interface Props {
 const { id, title, lead, pr = false } = Astro.props;
 ---
 
-<section id={id} class="mt-14 scroll-mt-6 border-t border-hairline pt-12">
+<section
+  id={id}
+  class="mt-14 border-t border-hairline pt-12 lg:mt-20 lg:pt-16"
+>
   <div class="flex flex-wrap items-center gap-3">
     <span class="h-px w-7 bg-accent" aria-hidden="true"></span>
-    <h2 class="text-[22px] font-black tracking-wide">{title}</h2>
+    <h2 class="text-[22px] font-black tracking-wide lg:text-[28px]">{title}</h2>
     {
       pr && (
         <span class="rounded-sm border border-accent/60 px-2 py-0.5 text-[11px] font-bold tracking-widest text-accent">
@@ -24,9 +27,15 @@ const { id, title, lead, pr = false } = Astro.props;
     }
   </div>
 
-  {lead && <p class="mt-4 text-[15px] text-ink-muted">{lead}</p>}
+  {
+    lead && (
+      <p class="mt-4 max-w-[42em] text-[15px] text-ink-muted lg:text-[16px]">
+        {lead}
+      </p>
+    )
+  }
 
-  <div class="mt-8">
+  <div class="mt-8 lg:mt-10">
     <slot />
   </div>
 </section>
