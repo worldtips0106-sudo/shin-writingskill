@@ -21,7 +21,7 @@ import CtaButton from "./CtaButton.astro";
     {
       site.heroImage && (
         /* スマホでは画面いっぱいに広げる */
-        <div class="-mx-5 mt-8 sm:-mx-6 lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:mx-0 lg:mt-0 lg:self-center">
+        <div class="-mx-5 mt-8 sm:-mx-6 lg:col-start-2 lg:row-span-4 lg:row-start-1 lg:mx-0 lg:mt-0 lg:self-center">
           <img
             src={site.heroImage}
             alt={site.heroImageAlt}
@@ -41,9 +41,19 @@ import CtaButton from "./CtaButton.astro";
       {site.tagline}
     </p>
 
+    {
+      site.heroLead.length > 0 && (
+        <div class="mx-auto mt-6 max-w-[34em] space-y-3.5 text-left text-[14px] text-ink-muted lg:col-start-1 lg:row-start-3 lg:mx-0 lg:mt-6 lg:text-[15px]">
+          {site.heroLead.map((line) => (
+            <p>{line}</p>
+          ))}
+        </div>
+      )
+    }
+
     <!-- 一番押したいボタン（1つだけ置く） -->
     <div
-      class="mx-auto mt-8 max-w-[380px] lg:col-start-1 lg:row-start-3 lg:mx-0 lg:mt-8"
+      class="mx-auto mt-8 max-w-[380px] lg:col-start-1 lg:row-start-4 lg:mx-0 lg:mt-8"
     >
       <CtaButton href={mainCta.url} label={mainCta.label} />
       {
