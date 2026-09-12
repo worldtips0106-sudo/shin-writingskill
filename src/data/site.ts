@@ -51,18 +51,19 @@ export const nav = [
 ];
 
 /**
- * LINE登録のURL。
- * サイト内のボタン（ヒーロー・講座・末尾・追従バー）は、すべてここに飛びます。
+ * LINEオープンチャットの招待URL。
+ * サイト内のボタン（上部メニュー・ヒーロー・末尾・追従バー）は、すべてここに飛びます。
  * 変えるときはこの1行だけ書き換えればOKです。
  */
-export const lineUrl = "https://utage-system.com/p/BvSRNEY92eLk";
+export const lineUrl =
+  "https://line.me/ti/g2/Y9MCHkqJpFG_ddM3RY0HPBm0YLLhF2cTEfc_wA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default";
 
 /** 一番押したいボタン（ヒーロー・末尾・画面下の追従ボタンで共通で使います） */
 export const mainCta = {
-  label: "LINEで無料プレゼントを受け取る",
+  label: "オプチャに登録する",
   url: lineUrl,
   /** ボタンの下に出る小さな一言（不要なら "" に） */
-  note: "登録は無料・いつでも解除できます",
+  note: "参加は無料・いつでも退出できます",
 };
 
 /** ② About（プロフィール） */
@@ -165,9 +166,9 @@ export const sns = {
       handle: "@shin_writing_skill",
     },
     {
-      label: "無料プレゼント",
-      url: "https://utage-system.com/p/BvSRNEY92eLk",
-      handle: "受け取る",
+      label: "オープンチャット",
+      url: lineUrl,
+      handle: "登録する",
     },
     // LINE公式・X・YouTubeを載せる場合は、下のような形で足してください
     // { label: "LINE公式", url: "https://lin.ee/〜", handle: "友だち追加" },
