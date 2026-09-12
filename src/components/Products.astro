@@ -45,15 +45,17 @@ import { products } from "../data/site";
               <p class="mt-5 text-[15px] font-bold text-accent">{item.price}</p>
             )}
 
-            <a
-              href={item.url}
-              target="_blank"
-              rel="noopener"
-              class="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full border border-accent px-6 py-3.5 text-[14px] font-bold text-accent transition hover:bg-accent hover:text-base lg:mt-8 lg:w-auto lg:self-start lg:px-8"
-            >
-              {item.ctaLabel}
-              <span aria-hidden="true">→</span>
-            </a>
+            {item.ctaLabel && (
+              <a
+                href={item.url}
+                target="_blank"
+                rel="noopener"
+                class="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full border border-accent px-6 py-3.5 text-[14px] font-bold text-accent transition hover:bg-accent hover:text-base lg:mt-8 lg:w-auto lg:self-start lg:px-8"
+              >
+                {item.ctaLabel}
+                <span aria-hidden="true">→</span>
+              </a>
+            )}
           </div>
         </article>
       ))

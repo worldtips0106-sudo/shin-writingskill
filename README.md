@@ -24,9 +24,6 @@ npm run dev
 | LINE登録URL（一番押したいボタン） | `mainCta.url` |
 | プロフィール文・実績数字 | `about` |
 | 商品・講座 | `products` |
-| 受講生対談動画 | `interviews`（YouTubeの動画IDだけ書く） |
-| LINE無料プレゼント | `lineGift` |
-| Instagram投稿 | `instagram` |
 | アフィリ商品 | `affiliates` |
 | SNS・連絡先 | `sns` |
 
@@ -44,8 +41,8 @@ YouTubeの動画IDは `https://youtu.be/**XXXXXXXXXXX**` の太字部分だけ�
 ## 3.5 上部メニューを編集する
 
 `src/data/site.ts` の `nav` を編集します（並び替え・削除・追加）。
-`hash` は各セクションのidと対応しています（`#about` `#service` `#voice`
-`#line` `#instagram` `#items` `#contact`）。
+`hash` は各セクションのidと対応しています（`#about` `#service`
+`#items` `#contact`）。
 
 メニューバーの左に出る名前は `site.shortName` です。
 
@@ -54,7 +51,7 @@ YouTubeの動画IDは `https://youtu.be/**XXXXXXXXXXX**` の太字部分だけ�
 `src/pages/index.astro` の並びを入れ替える・行を消すだけ。
 
 現在の並び：
-ヒーロー → About → サービス → 受講生の声 → **LINE無料プレゼント（主導線）** → Instagram → 使ってよかったもの(PR) → つながる → 画面下の追従ボタン
+ヒーロー → About → サービス → 使ってよかったもの(PR) → つながる → 画面下の追従ボタン
 
 ## 5. 色を変える
 
