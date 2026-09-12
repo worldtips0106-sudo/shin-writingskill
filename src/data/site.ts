@@ -46,8 +46,6 @@ export const site = {
 export const nav = [
   { label: "はじめまして", hash: "#about" },
   { label: "サービス", hash: "#service" },
-  { label: "おすすめ", hash: "#items" },
-  { label: "つながる", hash: "#contact" },
 ];
 
 /**
@@ -128,51 +126,4 @@ export const products = {
     ],
     note: "掲載しているのは個人の成果であり、同じ結果を保証するものではありません。",
   },
-};
-
-/** ⑥ 推しアフィリエイト商品（「PR」表記が自動で付きます） */
-export const affiliates = {
-  heading: "使ってよかったもの",
-  lead: "実際に自分で使って、よかったものだけを紹介しています。",
-  items: [
-    {
-      name: "【要入力】商品名",
-      comment: "【要入力】推薦文（なぜ良いか、誰におすすめかを2〜3行で）",
-      /** アフィリエイトリンク */
-      url: "#",
-    },
-    {
-      name: "【要入力】商品名（不要ならこのブロックごと削除）",
-      comment: "【要入力】推薦文",
-      url: "#",
-    },
-  ],
-};
-
-/** ⑦ SNS・連絡先 */
-export const sns = {
-  heading: "つながる",
-  lead: "ふだんはInstagramにいます。お気軽にどうぞ。",
-  links: [
-    // 使わないものは行ごと削除してOK
-    {
-      label: "Instagram",
-      url: "https://www.instagram.com/shin_writing_skill/",
-      handle: "@shin_writing_skill",
-    },
-    {
-      label: "Threads",
-      url: "https://www.threads.net/@shin_writing_skill",
-      handle: "@shin_writing_skill",
-    },
-    {
-      label: "オープンチャット",
-      url: lineUrl,
-      handle: "登録する",
-    },
-    // LINE公式・X・YouTubeを載せる場合は、下のような形で足してください
-    // { label: "LINE公式", url: "https://lin.ee/〜", handle: "友だち追加" },
-  ],
-  /** お問い合わせ先（不要なら "" に） */
-  email: "【要入力】メールアドレス",
 };
